@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Database</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <h2>Belajar Ruby On Rails</h2>
+    
+    <% if current_user %>
+    <div>halo <%= current_user.name %></div>
+    <%= link_to "logout",session_path(current_user), method: :delete %>
+    <% else %>
+    silahkan login ter lebih dahulu
+    <% end %>
+    
+    <% if flash[:notice].present? %>
+    <%= flash[:notice] %>
+<% end %>
+   <%= yield %>
+  </body>
+</html>
